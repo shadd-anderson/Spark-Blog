@@ -1,0 +1,41 @@
+{{#block "header"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{#block "title"}}Shadd's Blog{{/block}}</title>
+    <link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Noto+Sans:700,400' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="site-header">
+            <a class="logo" href="/index">Shadd's Blog</a>
+            {{#if username}}
+                <p class="welcome-banner">Welcome, <a href="{{username}}">{{username}}</a>! <a href="/log-in">Sign in as a different user</a></p>
+            {{else}} <p class="welcome-banner"><a href="/log-in">Log in</a></p>
+            {{/if}}
+            {{#block "create-button"}}<a class="new-entry button button-round" href="/new"><i class="material-icons">create</i></a>{{/block}}
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container page">
+    {{#if flashMessage}}
+        <p class="flash-message">{{flashMessage}}</p>
+    {{/if}}
+{{/block}}
+{{#block "content"}}
+{{/block}}
+{{#block "footer"}}
+    </div>
+</section>
+<footer>
+</footer>
+</body>
+</html>
+{{/block}}

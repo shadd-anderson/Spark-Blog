@@ -1,0 +1,45 @@
+{{#partial "title"}}
+    {{entry.title}}
+{{/partial}}
+{{#partial "content"}}
+    <section>
+        <div class="entry-list single">
+            <article>
+            <h1>{{entry.title}}</h1>
+            <h2>by {{entry.author}}</h2>
+            <h3>updated on {{entry.date}}</h3>
+            <p class="entry">{{entry.content}}</p>
+            </article>
+            <h3>Tags:</h3>
+            <p>{{#each entry.tags}}<a href="/tags/{{this}}">{{this}}</a>, {{/each}}</p>
+            {{#if username}}
+            <br>
+            <form action="/entries/{{entry.slug}}/edit" method="get"><button class="button">Edit Entry</button></form>
+            <br>
+            {{/if}}
+            <form action="/entries" method="get"><button class="button">Back to entry list</button></form>
+        </div>
+    </section>
+    <section>
+        <div class="entry-comments">
+            <h2>Comments</h2>
+            <form action="/entries/{{entry.slug}}/comment" method="post" class="new-comment">
+                <label for="Title">Title:</label>
+                <input type="text" id="Title" name="title">
+                <label for="comment">Comment:</label>
+                <textarea name="comment" id="comment"></textarea>
+                <input type="submit" class="button" value="submit">
+                <br>
+                <section>
+                {{#each entry.comments}}
+                    <h3>{{this.title}} by <a href="/{{this.author}}">{{this.author}}</a></h3>
+                    <h4>on {{this.date}}</h4>
+                    <p>{{this.comment}}</p>
+                {{/each}}
+                </section>
+            </form>
+        </div>
+    </section>
+{{/partial}}
+
+{{> hbs/base.hbs}}
